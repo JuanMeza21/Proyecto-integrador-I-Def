@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <style>
+        #has-submenu:hover #submenu {
+            display: block;
+        }
+
+        #has-submenu {
+            position: relative;
+        }
+    </style>
+    <title>Linguaboost</title>
+</head>
+<body>
+
+    <header>
+        <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
+            <ul class="list-none flex justify-center gap-8 menu">
+                <li class="hover:text-blue-500"><a href="/src/index.html">Inicio</a></li>
+                <li class="hover:text-blue-500"><a href="/src/recursos.html">Recursos</a></li>
+                <li class="hover:text-blue-500"><a href="/src/pruebas.html">Pruebas</a></li>
+                <li id="has-submenu">
+                    <a class="hover:text-blue-500" href="">Pasatiempos</a>
+                    <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="sopa.html">Sopa de letras</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="ahorcado.html">Ahorcado</a></li>
+                    </ul>
+                </li>
+                <li class="hover:text-blue-500"><a href="../agenda.html">Agenda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="grid justify-center items-center ">
+        <div class="mt-[10%]">
+            <div class="game-modal">
+                <div class="content">
+                    <div class="grid justify-center items-center">
+                        <img src="#" alt="gif">
+                    </div>
+                    <h4>Perdiste!</h4>
+                    <p>La palabra correcta era: <b>rainbow</b></p>
+                    <button class="play-again">Juega de nuevo</button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="hangman-box">
+                    <img src="#" draggable="false" alt="hangman-img">
+                    <h1>Ahorcado</h1>
+                </div>
+                <div class="game-box">
+                    <ul class="word-display"></ul>
+                    <h4 class="hint-text">Pista: <b></b></h4>
+                    <h4 class="guesses-text">Intentos: <b></b></h4>
+                    <div class="keyboard"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    </footer>
+
+    <script src="main_j.js">                                                                                                                                 </script>
+    
+</body>
+</html>

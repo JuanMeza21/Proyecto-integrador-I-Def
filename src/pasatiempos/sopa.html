@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/src/output.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" crossorigin="anonymous"></script>
+    <script src="wordfind.js"></script>
+    <script src="wordfindgame.js"></script>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+        #has-submenu:hover #submenu {
+            display: block;
+        }
+
+        #has-submenu {
+            position: relative;
+        }
+    </style>
+    <title>Linguaboost</title>
+</head>
+<body>
+
+    <header>
+        <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
+            <ul class="list-none flex justify-center gap-8 menu">
+                <li class="hover:text-blue-500"><a href="/src/index.html">Inicio</a></li>
+                <li class="hover:text-blue-500"><a href="/src/recursos.html">Recursos</a></li>
+                <li class="hover:text-blue-500"><a href="/src/pruebas.html">Pruebas</a></li>
+                <li id="has-submenu">
+                    <a class="hover:text-blue-500" href="">Pasatiempos</a>
+                    <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="sopa.html">Sopa de letras</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="ahorcado.html">Ahorcado</a></li>
+                    </ul>
+                </li>
+                <li class="hover:text-blue-500"><a href="/src/agenda.html">Agenda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="pt-4 flex justify-center items-center">
+            <div id="contenedor"></div>
+            <div id="palabras-sopadeletras"></div>
+        </div>
+
+        <div class="text-center">
+            <input type="button" id="BTNresolver" class=" mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer" value="Resolver sopa de letras" />
+            <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" class=" mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer">
+        </div>
+    </section>
+
+    <footer>
+    </footer>
+    
+    <script>
+        // Array con las palabras que el usuario debe buscar
+        var palabras = ['efimero', 'quimera', 'paradoja',
+            'efervescencia', 'quirofano', 'lobrego',
+            'ebano', 'esotérico', 'indigo',
+            'efluvio', 'sibilino', 'furtivo',
+            'arcano', 'gargola', 'gaznapiro',
+            'petreo', 'crepusculo', 'fervido',
+            'lúgubre', 'perfido', 'quimérico',
+            'sequito', 'espectro', 'brumoso',
+            'clandestino', 'caótico', 'disidente'
+        ];
+
+        // Comienza un juego de palabras
+        var sopaLetras = wordfindgame.create(palabras, '#contenedor', '#palabras-sopadeletras');
+        // Función para resolver la sopa de petras             
+        $("#BTNresolver").click(function () {
+            var resultado = wordfindgame.solve(sopaLetras, palabras);
+        });
+        // Función para reiniciar la sopa de letras
+        $("#BTNrefresh").click(function () {
+            window.location.href = window.location.href;
+        });
+            
+    </script>                                                                                                                  </script>
+    
+</body>
+</html>
