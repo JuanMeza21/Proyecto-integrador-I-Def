@@ -31,7 +31,7 @@ function addDeleteBtn(li) {
 
   // Get current date and time
   const creationDate = new Date();
-  creationTimeSpan.textContent = `Creado el ${creationDate.toLocaleString()}`;
+  creationTimeSpan.textContent = `${creationDate.toLocaleString()}`;
 
   deleteBtn.addEventListener("click", (e) => {
     ul.removeChild(li); // Remove the parent <li> instead of the button's parent

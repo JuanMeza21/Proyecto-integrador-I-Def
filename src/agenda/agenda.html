@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
-    <link rel="stylesheet" href="agenda.css">
+    <link href="../output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <title>Linguaboost</title>
 </head>
@@ -13,14 +13,14 @@
     <header>
         <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
             <ul class="list-none flex justify-center gap-8">
-                <li class="hover:text-blue-500"><a href="index.html">Inicio</a></li>
-                <li class="hover:text-blue-500"><a href="recursos.html">Recursos</a></li>
-                <li class="hover:text-blue-500"><a href="pruebas.html">Pruebas</a></li>
+                <li class="hover:text-blue-500"><a href="../index.html">Inicio</a></li>
+                <li class="hover:text-blue-500"><a href="../recursos.html">Recursos</a></li>
+                <li class="hover:text-blue-500"><a href="../pruebas.html">Pruebas</a></li>
                 <li id="has-submenu">
                     <a class="hover:text-blue-500" href="">Pasatiempos</a>
                     <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
-                        <li><a class="hover:text-[17px] hover:text-blue-500" href="pasatiempos/sopa.html">Sopa de letras</a></li>
-                        <li><a class="hover:text-[17px] hover:text-blue-500" href="pasatiempos/ahorcado.html">Ahorcado</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/sopa.html">Sopa de letras</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/ahorcado.html">Ahorcado</a></li>
                     </ul>
                 </li>
                 <li class="hover:text-blue-500"><a href="agenda.html">Agenda</a></li>
@@ -28,14 +28,14 @@
         </nav>
     </header>
 
-    <section>
-        <div class="container grid grid-cols-4 justify-center ">
-            <div class="col-span-1 bg-[#393E46] p-2 m-2 rounded-md h-max">
+    <section class="grid justify-center">
+        <div class="container grid grid-cols-6 justify-center ">
+            <div class="col-span-2 bg-[#393E46] p-2 m-2 rounded-md h-max">
                 <div class="grid justify-center">
                     <h1 class="text-white text-center">Lista de Tareas</h1>
                     <div class="search">
                         <form>
-                            <input type="text" placeholder="Agregar tarea...">
+                            <input class="px-2" type="text" placeholder="Agregar tarea...">
                             <button class="btn-add border-solid bg-[#00ADB5] px-2 rounded-e-lg">+</button>
                         </form>
                     </div>
@@ -46,19 +46,19 @@
                     <header>
                         <h3></h3>
                         <nav>
-                        <button id="prev"></button>
-                        <button id="next"></button>
+                            <button id="prev"></button>
+                            <button id="next"></button>
                         </nav>
                     </header>
                     <section>
                         <ul class="days">
-                        <li>Sun</li>
-                        <li>Mon</li>
-                        <li>Tue</li>
-                        <li>Wed</li>
-                        <li>Thu</li>
-                        <li>Fri</li>
-                        <li>Sat</li>
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
                         </ul>
                         <ul class="dates"></ul>
                     </section>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             
-            <div id="task" class="col-span-3 m-2 rounded-md bg-[#EEEEEE] p-4">
+            <div id="task" class="col-span-4 m-2 rounded-md bg-[#EEEEEE] p-4">
                 <div class="li-container">
                     <ul>
                     </ul>
@@ -81,6 +81,6 @@
     <footer>
     </footer>
 
-    <script src="agenda.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

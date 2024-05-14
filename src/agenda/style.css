@@ -15,8 +15,7 @@
 }
 
 #task .li-container ul li span {
-  background-color: #00adb5;
-  padding: 2px 8px 2px 8px;
+  padding: 2px 8px 2px 0px;
   border-radius: 8px;
 }
 
@@ -25,8 +24,9 @@
   margin-bottom: 8px;
   padding: 8px;
   border-radius: 8px;
-  background-color: #eeeeee;
+  background-color: #222831;
   width: max-content;
+  color: white;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
