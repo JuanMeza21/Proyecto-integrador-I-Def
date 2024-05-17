@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #has-submenu:hover #submenu {
+            display: block;
+        }
+
+        #has-submenu {
+            position: relative;
+        }
+    </style>
+    <title>Linguaboost</title>
+</head>
+<body>
+
+    <header>
+        <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
+            <ul class="list-none flex justify-center gap-8 menu">
+                <li class="hover:text-blue-500"><a href="../index.html">Inicio</a></li>
+                <li class="hover:text-blue-500"><a href="../recursos.html">Recursos</a></li>
+                <li class="hover:text-blue-500"><a href="../tests.html">Tests</a></li>
+                <li id="has-submenu">
+                    <a class="hover:text-blue-500" href="">Pasatiempos</a>
+                    <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/sopa.html">Sopa de letras</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/ahorcado.html">Ahorcado</a></li>
+                    </ul>
+                </li>
+                <li class="hover:text-blue-500"><a href="../agenda/agenda.html">Agenda</a></li>
+                <li class="hover:text-blue-500"><a href="../libros/libro.html">Libros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div class="wrapper">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search product name here.."/>
+                <button id="search">Search</button>
+            </div>
+            <div id="buttons">
+                <button class="button-value" onclick="filterProduct('all')">All</button>
+                <button class="button-value" onclick="filterProduct('Topwear')">Topwear</button>
+                <button class="button-value" onclick="filterProduct('Bottomwear')"> Bottomwear</button>
+                <button class="button-value" onclick="filterProduct('Jacket')">Jacket</button>
+                <button class="button-value" onclick="filterProduct('Watch')">Watch</button>
+            </div>
+            <div id="products"></div>
+        </div>
+    </section>
+
+    <script src="main.js"></script>
+</body>

@@ -15,7 +15,7 @@
             <ul class="list-none flex justify-center gap-8">
                 <li class="hover:text-blue-500"><a href="../index.html">Inicio</a></li>
                 <li class="hover:text-blue-500"><a href="../recursos.html">Recursos</a></li>
-                <li class="hover:text-blue-500"><a href="../pruebas.html">Pruebas</a></li>
+                <li class="hover:text-blue-500"><a href="../tests.html">Tests</a></li>
                 <li id="has-submenu">
                     <a class="hover:text-blue-500" href="">Pasatiempos</a>
                     <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
@@ -24,19 +24,19 @@
                     </ul>
                 </li>
                 <li class="hover:text-blue-500"><a href="agenda.html">Agenda</a></li>
+                <li class="hover:text-blue-500"><a href="../libros/libro.html">Libros</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="grid justify-center">
         <div class="container grid grid-cols-6 justify-center ">
-            <div class="col-span-2 bg-[#393E46] p-2 m-2 rounded-md h-max">
-                <div class="grid justify-center">
-                    <h1 class="text-white text-center">Lista de Tareas</h1>
+            <div class="col-span-2 p-2 m-2 rounded-md h-max">
+                <div class="grid justify-center bg-[#EEEEEE] p-4 rounded-md">
                     <div class="search">
                         <form>
-                            <input class="px-2" type="text" placeholder="Agregar tarea...">
-                            <button class="btn-add border-solid bg-[#00ADB5] px-2 rounded-e-lg">+</button>
+                            <input class="px-2 rounded-sm" type="text" placeholder="Agregar tarea...">
+                            <button class="btn-add border-solid bg-[#00ADB5] px-2 rounded-sm text-white">Añadir tarea</button>
                         </form>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 </div>
             </div>
             
-            <div id="task" class="col-span-4 m-2 rounded-md bg-[#EEEEEE] p-4">
+            <div id="task" class="col-span-4 m-4 rounded-md border-solid border-[1px] p-4">
                 <div class="li-container">
                     <ul>
                     </ul>

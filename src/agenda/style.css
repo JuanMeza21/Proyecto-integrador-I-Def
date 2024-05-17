@@ -12,6 +12,11 @@
   padding: 0px 20px 0px 20px;
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
+  float: left;
+}
+
+span {
+  float: right;
 }
 
 #task .li-container ul li span {
@@ -24,9 +29,9 @@
   margin-bottom: 8px;
   padding: 8px;
   border-radius: 8px;
-  background-color: #222831;
+  border: solid 1px #ccc;
+  box-shadow: #ccc;
   width: max-content;
-  color: white;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
@@ -41,8 +46,8 @@ h3 {
   padding: 1rem;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin-top: 10px;
+  border: solid 1px #ccc;
 }
 .calendar header {
   display: flex;

@@ -26,7 +26,7 @@ function addDeleteBtn(li) {
   const deleteBtn = document.createElement("button");
   const creationTimeSpan = document.createElement("span");
 
-  deleteBtn.textContent = "X";
+  deleteBtn.textContent = "Eliminar";
   deleteBtn.className = "btn-delete";
 
   // Get current date and time
@@ -127,3 +127,5 @@ navs.forEach((nav) => {
 });
 
 renderCalendar();
+
+//Buscador
