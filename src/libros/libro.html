@@ -13,6 +13,9 @@
         #has-submenu {
             position: relative;
         }
+        .hide {
+            display: none;
+        }
     </style>
     <title>Linguaboost</title>
 </head>
@@ -38,21 +41,47 @@
     </header>
 
     <section>
-        <div class="wrapper">
+        <div class="wrapper p-8">
             <div id="search-container">
-                <input type="search" id="search-input" placeholder="Search product name here.."/>
-                <button id="search">Search</button>
+                <input class="w-[500px] px-3 py-2 bg-[#EEEEEE] rounded-sm" type="search" id="search-input" placeholder="Buscar título de libro aquí..." />
+                <button class="px-3 py-2 bg-[#00ADB5] text-white rounded-sm" id="search">Buscar</button>
             </div>
-            <div id="buttons">
-                <button class="button-value" onclick="filterProduct('all')">All</button>
-                <button class="button-value" onclick="filterProduct('Topwear')">Topwear</button>
-                <button class="button-value" onclick="filterProduct('Bottomwear')"> Bottomwear</button>
-                <button class="button-value" onclick="filterProduct('Jacket')">Jacket</button>
-                <button class="button-value" onclick="filterProduct('Watch')">Watch</button>
+            <div class="py-2 px-1" id="buttons">
+                <button id="button-value" class="border-[#00ADB5] border-inherit border-2 rounded-full px-4" onclick="filterBook('all')">Todos</button>
+                <button id="button-value" class="border-[#00ADB5] border-inherit border-2 rounded-full px-4" onclick="filterBook('Fiction')">Ficción</button>
+                <button id="button-value" class="border-[#00ADB5] border-inherit border-2 rounded-full px-4" onclick="filterBook('Non-Fiction')">No Ficción</button>
+                <button id="button-value" class="border-[#00ADB5] border-inherit border-2 rounded-full px-4" onclick="filterBook('Science')">Ciencia</button>
+                <button id="button-value" class="border-[#00ADB5] border-inherit border-2 rounded-full px-4" onclick="filterBook('Biography')">Biografía</button>
             </div>
-            <div id="products"></div>
+            <div class="grid grid-cols-5 items-center text-center" id="books"></div>
         </div>
     </section>
 
+    <!-- Modal para la prueba -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="font-bold pb-2" id="quiz-title">Quiz Title</h2>
+            <form id="quiz-form">
+                <div>
+                    <p>Pregunta 1: <span id="question1"></span></p>
+                    <input class="bg-[#EEEEEE] mb-2 px-2 w-[600px]" type="text" id="answer1" required placeholder="...">
+                </div>
+                <div>
+                    <p>Pregunta 2: <span id="question2"></span></p>
+                    <input class="bg-[#EEEEEE] mb-2 px-2 w-[600px]" type="text" id="answer2" required placeholder="...">
+                </div>
+                <div>
+                    <p>Pregunta 3: <span id="question3"></span></p>
+                    <input class="bg-[#EEEEEE] mb-2 px-2 w-[600px]" type="text" id="answer3" required placeholder="...">
+                </div>
+                <button class="bg-[#00ADB5] text-white px-2 py-1" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
+</html>

@@ -1,131 +1,58 @@
-const input = document.querySelector("input");
-const addBtn = document.querySelector(".btn-add");
-const ul = document.querySelector(".li-container ul"); // Selecting the ul within the section
-const empty = document.querySelector(".empty");
+// Selecciona elementos del DOM necesarios para la funcionalidad de la lista de tareas
+const input = document.querySelector("input"); // Campo de entrada de texto
+const addBtn = document.querySelector(".btn-add"); // Botón para agregar tareas
+const ul = document.querySelector(".li-container ul"); // Selección del <ul> dentro de la sección contenedora
+const empty = document.querySelector(".empty"); // Mensaje que se muestra cuando la lista está vacía
 
+// Agrega un evento de clic al botón de agregar
 addBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+  e.preventDefault(); // Evita el comportamiento por defecto del botón (por ejemplo, si está dentro de un formulario)
 
-  const text = input.value;
+  const text = input.value; // Obtiene el texto ingresado
 
   if (text !== "") {
-    const li = document.createElement("li");
-    const p = document.createElement("p");
-    p.textContent = text;
+    // Verifica que el texto no esté vacío
+    const li = document.createElement("li"); // Crea un nuevo elemento <li>
+    const p = document.createElement("p"); // Crea un nuevo elemento <p>
+    p.textContent = text; // Establece el texto del <p> con el valor del input
 
-    li.appendChild(p);
-    li.appendChild(addDeleteBtn(li)); // Pass the created <li> to addDeleteBtn function
-    ul.appendChild(li); // Appending the new task to the ul within the section
+    li.appendChild(p); // Añade el <p> al <li>
+    li.appendChild(addDeleteBtn(li)); // Añade el botón de eliminar al <li> llamando a la función addDeleteBtn
+    ul.appendChild(li); // Añade el <li> al <ul>
 
-    input.value = "";
-    empty.style.display = "none";
+    input.value = ""; // Limpia el campo de entrada
+    empty.style.display = "none"; // Oculta el mensaje de lista vacía
   }
 });
 
+// Función para crear un botón de eliminar y un span con la fecha y hora de creación
 function addDeleteBtn(li) {
-  const deleteBtn = document.createElement("button");
-  const creationTimeSpan = document.createElement("span");
+  const deleteBtn = document.createElement("button"); // Crea un nuevo botón
+  const creationTimeSpan = document.createElement("span"); // Crea un nuevo span para la fecha y hora de creación
 
-  deleteBtn.textContent = "Eliminar";
-  deleteBtn.className = "btn-delete";
+  deleteBtn.textContent = "Eliminar"; // Establece el texto del botón
+  deleteBtn.className = "btn-delete"; // Añade una clase al botón para estilo
 
-  // Get current date and time
+  // Obtiene la fecha y hora actuales
   const creationDate = new Date();
-  creationTimeSpan.textContent = `${creationDate.toLocaleString()}`;
+  creationTimeSpan.textContent = `${creationDate.toLocaleString()}`; // Establece el texto del span con la fecha y hora formateada
 
+  // Añade un evento de clic al botón de eliminar
   deleteBtn.addEventListener("click", (e) => {
-    ul.removeChild(li); // Remove the parent <li> instead of the button's parent
+    ul.removeChild(li); // Elimina el <li> correspondiente del <ul>
 
-    const items = document.querySelectorAll(".li-container ul li"); // Selecting all li elements within the ul
+    const items = document.querySelectorAll(".li-container ul li"); // Selecciona todos los <li> dentro del <ul>
 
     if (items.length === 0) {
-      empty.style.display = "block";
+      // Verifica si no hay más elementos en la lista
+      empty.style.display = "block"; // Muestra el mensaje de lista vacía
     }
   });
 
+  // Crea un contenedor para el botón de eliminar y el span de fecha y hora
   const container = document.createElement("div");
-  container.appendChild(deleteBtn);
-  container.appendChild(creationTimeSpan);
+  container.appendChild(deleteBtn); // Añade el botón de eliminar al contenedor
+  container.appendChild(creationTimeSpan); // Añade el span de fecha y hora al contenedor
 
-  return container;
+  return container; // Devuelve el contenedor
 }
-
-
-const header = document.querySelector(".calendar h3");
-const dates = document.querySelector(".dates");
-const navs = document.querySelectorAll("#prev, #next");
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-let date = new Date();
-let month = date.getMonth();
-let year = date.getFullYear();
-
-function renderCalendar() {
-  const start = new Date(year, month, 1).getDay();
-  const endDate = new Date(year, month + 1, 0).getDate();
-  const end = new Date(year, month, endDate).getDay();
-  const endDatePrev = new Date(year, month, 0).getDate();
-
-  let datesHtml = "";
-
-  for (let i = start; i > 0; i--) {
-    datesHtml += `<li class="inactive">${endDatePrev - i + 1}</li>`;
-  }
-
-  for (let i = 1; i <= endDate; i++) {
-    let className =
-      i === date.getDate() &&
-      month === new Date().getMonth() &&
-      year === new Date().getFullYear()
-        ? ' class="today"'
-        : "";
-    datesHtml += `<li${className}>${i}</li>`;
-  }
-
-  for (let i = end; i < 6; i++) {
-    datesHtml += `<li class="inactive">${i - end + 1}</li>`;
-  }
-
-  dates.innerHTML = datesHtml;
-  header.textContent = `${months[month]} ${year}`;
-}
-
-navs.forEach((nav) => {
-  nav.addEventListener("click", (e) => {
-    const btnId = e.target.id;
-
-    if (btnId === "prev" && month === 0) {
-      year--;
-      month = 11;
-    } else if (btnId === "next" && month === 11) {
-      year++;
-      month = 0;
-    } else {
-      month = btnId === "next" ? month + 1 : month - 1;
-    }
-
-    date = new Date(year, month, new Date().getDate());
-    year = date.getFullYear();
-    month = date.getMonth();
-
-    renderCalendar();
-  });
-});
-
-renderCalendar();
-
-//Buscador
