@@ -1,19 +1,9 @@
-//----------Index--------------
-
-document.addEventListener("DOMContentLoaded", function () {
-  var submenuToggle = document.querySelector(".submenu-toggle");
-  var submenu = document.querySelector(".submenu");
-
-  submenuToggle.addEventListener("click", function () {
-    submenu.classList.toggle("active");
-  });
-});
+//Consejos
 
 function obtenerNumeroAzar() {
   return Math.floor(Math.random() * (8 - 0) + 0);
 }
 
-//Consejos
 function establecerConsejo() {
   let consejos1 = [
     "Lee diariamente: Dedica un tiempo todos los días a la lectura, incluso si es solo por unos minutos. La práctica constante es clave para mejorar.",
@@ -53,10 +43,8 @@ function establecerConsejo() {
   let cuerpoConsejo2 = consejo2.substring(consejo2.indexOf(":") + 1);
 
   // Formatear el título en negrita y actualizar el contenido de los elementos HTML
-  document.getElementById("consejo1").innerHTML =
-    "<strong>" + tituloConsejo1 + "</strong>" + cuerpoConsejo1;
-  document.getElementById("consejo2").innerHTML =
-    "<strong>" + tituloConsejo2 + "</strong>" + cuerpoConsejo2;
+  document.getElementById("consejo1").innerHTML = "<strong>" + tituloConsejo1 + "</strong>" + cuerpoConsejo1;
+  document.getElementById("consejo2").innerHTML = "<strong>" + tituloConsejo2 + "</strong>" + cuerpoConsejo2;
 }
 
 establecerConsejo();
@@ -130,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalImages = galleryItems.length;
 
     currentIndex = (currentIndex + direction + totalImages) % totalImages;
-    const offset = -currentIndex * 100;
 
     // Seleccionar el contenedor de la galería
     const galleryContainer = document.querySelector(".gallery-container");

@@ -1,6 +1,9 @@
 // Lista de palabras con sus respectivas pistas
 const wordList = [
-  { word: "efimero", hint: "Que dura poco tiempo." },
+  {
+    word: "efimero",
+    hint: "Que dura poco tiempo.",
+  },
   {
     word: "quimera",
     hint: "Proyecto, deseo o ilusión, irrealizable o difícil de realizar.",
@@ -10,20 +13,29 @@ const wordList = [
     hint: "Hecho o circunstancia extraña, contradictoria o sorprendente.",
   },
   {
-    word: "efervescencia",
-    hint: "Agitación o inquietud excesiva en el ánimo de alguien.",
+    word: "bonhomia",
+    hint: "Afabilidad, sencillez, bondad y honradez en el carácter.",
   },
   {
     word: "quirofano",
     hint: "Sala de un hospital destinada a las operaciones quirúrgicas.",
   },
-  { word: "lobrego", hint: "Tenebroso, oscuro o sombrío." },
-  { word: "ebano", hint: "Madera muy dura y negra." },
+  {
+    word: "lobrego",
+    hint: "Tenebroso, oscuro o sombrío.",
+  },
+  {
+    word: "ebano",
+    hint: "Madera muy dura y negra.",
+  },
   {
     word: "esotérico",
     hint: "Que es conocido solo por iniciados en una doctrina o disciplina.",
   },
-  { word: "indigo", hint: "Color azul oscuro." },
+  {
+    word: "indigo",
+    hint: "Color azul oscuro.",
+  },
   {
     word: "efluvio",
     hint: "Emisión o desprendimiento de algo, especialmente de un líquido.",
@@ -97,76 +109,74 @@ const maxGuesses = 6;
 
 // Función para reiniciar el juego
 const resetGame = () => {
-  correctLetters = []; // Letras correctas
-  wrongGuessCount = 0; // Contador de fallos
-  hangmanImage.src = "images/hangman-0.svg"; // Imagen inicial del ahorcado
-  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`; // Actualizar texto de adivinanzas
+  correctLetters = [];
+  wrongGuessCount = 0;
+  hangmanImage.src = `images/hangman-0.svg`;
+  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
   wordDisplay.innerHTML = currentWord
     .split("")
     .map(() => `<li class="letter"></li>`)
-    .join(""); // Mostrar espacios para las letras de la palabra
+    .join("");
   keyboardDiv
     .querySelectorAll("button")
-    .forEach((btn) => (btn.disabled = false)); // Habilitar botones del teclado
-  gameModal.classList.remove("show"); // Ocultar modal del juego
+    .forEach((btn) => (btn.disabled = false));
+  gameModal.classList.remove("show");
 };
 
 // Función para obtener una palabra aleatoria
 const getRandomWord = () => {
-  const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)]; // Seleccionar palabra y pista aleatoria
-  currentWord = word; // Asignar palabra actual
-  document.querySelector(".hint-text b").innerText = hint; // Mostrar pista
-  resetGame(); // Reiniciar juego
+  const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+  currentWord = randomWord.word;
+  document.querySelector(".hint-text b").innerText = randomWord.hint;
+  resetGame();
 };
 
 // Función para manejar el final del juego
 const gameOver = (isVictory) => {
-  const modalText = isVictory
-    ? `Encontraste la palabra correcta:`
-    : "La palabra correcta era:"; // Mensaje según resultado
   gameModal.querySelector("img").src = `images/${
     isVictory ? "victory" : "lost"
-  }.gif`; // Imagen según resultado
+  }.gif`;
   gameModal.querySelector("h4").innerText = isVictory
     ? "Felicitaciones!"
-    : "Game Over!"; // Título según resultado
-  gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`; // Mostrar palabra correcta
-  gameModal.classList.add("show"); // Mostrar modal del juego
+    : "Game Over!";
+  gameModal.querySelector("p").innerHTML = `${
+    isVictory ? "Encontraste la palabra correcta:" : "La palabra correcta era:"
+  } <b>${currentWord}</b>`;
+  gameModal.classList.add("show");
 };
 
-// Función para inicializar el juego al hacer clic en una letra
-const initGame = (button, clickedLetter) => {
-  if (currentWord.includes(clickedLetter)) {
-    // Si la letra está en la palabra
-    [...currentWord].forEach((letter, index) => {
-      if (letter === clickedLetter) {
-        correctLetters.push(letter); // Agregar letra correcta
-        wordDisplay.querySelectorAll("li")[index].innerText = letter; // Mostrar letra en la palabra
-        wordDisplay.querySelectorAll("li")[index].classList.add("guessed"); // Marcar letra como adivinada
+// Función para manejar el clic en una letra
+const handleLetterClick = (button, letter) => {
+  if (currentWord.includes(letter)) {
+    currentWord.split("").forEach((char, index) => {
+      if (char === letter) {
+        correctLetters.push(char);
+        wordDisplay.querySelectorAll("li")[index].innerText = char;
+        wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
       }
     });
   } else {
-    // Si la letra no está en la palabra
-    wrongGuessCount++; // Incrementar contador de fallos
-    hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`; // Actualizar imagen del ahorcado
+    wrongGuessCount++;
+    hangmanImage.src = `images/hangman-${wrongGuessCount}.svg`;
   }
-  button.disabled = true; // Deshabilitar botón de la letra
-  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`; // Actualizar texto de adivinanzas
+  button.disabled = true;
+  guessesText.innerText = `${wrongGuessCount} / ${maxGuesses}`;
 
-  // Verificar si el juego ha terminado
-  if (wrongGuessCount === maxGuesses) return gameOver(false); // Si se alcanzó el máximo de fallos, el juego se pierde
-  if (correctLetters.length === currentWord.length) return gameOver(true); // Si se adivinaron todas las letras, el juego se gana
+  if (wrongGuessCount === maxGuesses) return gameOver(false);
+  if (correctLetters.length === currentWord.length) return gameOver(true);
 };
 
-// Crear botones del teclado y agregarles eventos de clic
-for (let i = 97; i <= 122; i++) {
-  const button = document.createElement("button");
-  button.innerText = String.fromCharCode(i); // Convertir código ASCII a letra
-  keyboardDiv.appendChild(button); // Agregar botón al div del teclado
-  button.addEventListener("click", (e) =>
-    initGame(e.target, String.fromCharCode(i))
-  ); // Agregar evento de clic al botón
-}
+// Crear botones del teclado y agregar eventos de clic
+const createKeyboard = () => {
+  for (let i = 97; i <= 122; i++) {
+    const letter = String.fromCharCode(i);
+    const button = document.createElement("button");
+    button.innerText = letter;
+    button.addEventListener("click", () => handleLetterClick(button, letter));
+    keyboardDiv.appendChild(button);
+  }
+};
 
-getRandomWord(); // Iniciar el juego con una palabra aleatoria
-playAgainBtn.addEventListener("click", getRandomWord); // Agregar evento de clic al botón de jugar de nuevo
+createKeyboard();
+getRandomWord();
+playAgainBtn.addEventListener("click", getRandomWord);

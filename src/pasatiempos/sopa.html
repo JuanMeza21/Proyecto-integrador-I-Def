@@ -47,8 +47,16 @@
         </div>
 
         <div class="text-center">
-            <input type="button" id="BTNresolver" class=" mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer" value="Resolver sopa de letras" />
-            <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" class=" mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer">
+            <input type="button" id="BTNiniciar" class="mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer" value="Iniciar sopa de letras" />
+            <input type="button" id="BTNresolver" class="mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer" value="Resolver sopa de letras" />
+            <input type="button" value="Reiniciar la sopa de letras" id="BTNrefresh" class="mt-2 text-[20px] bg-[#393E46] text-white px-4 rounded-sm cursor-pointer">
+        </div>
+
+        <div class="mt-4 text-center">
+            <h3>Selecciona palabras para buscar:</h3>
+            <div id="checkboxes">
+                <!-- Los checkboxes se generarán dinámicamente aquí -->
+            </div>
         </div>
     </section>
 
@@ -56,9 +64,9 @@
     </footer>
     
     <script>
-        // Array con las palabras que el usuario debe buscar
+        // Array con las palabras que el usuario puede buscar
         var palabras = ['efimero', 'quimera', 'paradoja',
-            'efervescencia', 'quirofano', 'lobrego',
+            'bonhomia', 'quirofano', 'lobrego',
             'ebano', 'esoterico', 'indigo',
             'efluvio', 'sibilino', 'furtivo',
             'arcano', 'gargola', 'gaznapiro',
@@ -68,18 +76,66 @@
             'clandestino', 'caótico', 'disidente'
         ];
 
-        // Comienza un juego de palabras
-        var sopaLetras = wordfindgame.create(palabras, '#contenedor', '#palabras-sopadeletras');
-        // Función para resolver la sopa de petras             
-        $("#BTNresolver").click(function () {
-            var resultado = wordfindgame.solve(sopaLetras, palabras);
+        // Función para generar checkboxes
+        function generarCheckboxes() {
+            var checkboxesDiv = document.getElementById('checkboxes');
+            
+            palabras.forEach(function(palabra) {
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = palabra;
+                checkbox.value = palabra;
+                
+                var label = document.createElement('label');
+                label.textContent = palabra;
+                label.setAttribute('for', palabra);
+                
+                var br = document.createElement('br');
+                
+                checkboxesDiv.appendChild(checkbox);
+                checkboxesDiv.appendChild(label);
+                checkboxesDiv.appendChild(br);
+            });
+        }
+
+        // Llamar a la función para generar los checkboxes al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            generarCheckboxes();
         });
-        // Función para reiniciar la sopa de letras
+
+        // Event Listener para el botón de resolver sopa de letras
+        $("#BTNresolver").click(function () {
+            // Obtener las palabras seleccionadas
+            var palabrasSeleccionadas = [];
+            palabras.forEach(function(palabra) {
+                if ($('#' + palabra).prop('checked')) {
+                    palabrasSeleccionadas.push(palabra);
+                }
+            });
+            
+            // Crear y resolver la sopa de letras con las palabras seleccionadas
+            var sopaLetras = wordfindgame.create(palabrasSeleccionadas, '#contenedor', '#palabras-sopadeletras');
+            var resultado = wordfindgame.solve(sopaLetras, palabrasSeleccionadas);
+        });
+
+        // Event Listener para el botón de iniciar sopa de letras
+        $("#BTNiniciar").click(function () {
+            // Obtener las palabras seleccionadas
+            var palabrasSeleccionadas = [];
+            palabras.forEach(function(palabra) {
+                if ($('#' + palabra).prop('checked')) {
+                    palabrasSeleccionadas.push(palabra);
+                }
+            });
+            
+            // Crear la sopa de letras con las palabras seleccionadas
+            var sopaLetras = wordfindgame.create(palabrasSeleccionadas, '#contenedor', '#palabras-sopadeletras');
+        });
+
+        // Event Listener para el botón de reiniciar sopa de letras
         $("#BTNrefresh").click(function () {
             window.location.href = window.location.href;
         });
-            
-    </script>                                                                                                                  </script>
-    
+    </script>
 </body>
 </html>

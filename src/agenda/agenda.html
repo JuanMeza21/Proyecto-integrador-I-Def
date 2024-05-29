@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../output.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <style>
+        #has-submenu:hover #submenu {
+            display: block;
+        }
+
+        #has-submenu {
+            position: relative;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
 
     <title>Linguaboost</title>
 </head>
@@ -34,9 +48,10 @@
             <div class="col-span-2 p-2 m-2 rounded-md h-max">
                 <div class="grid justify-center bg-[#EEEEEE] p-4 rounded-md">
                     <div class="search">
-                        <form>
-                            <input class="px-2 rounded-sm" type="text" placeholder="Agregar tarea...">
-                            <button class="btn-add border-solid bg-[#00ADB5] px-2 rounded-sm text-white">Añadir tarea</button>
+                        <form id="taskForm">
+                            <input id="taskInput" class="px-2 rounded-sm" type="text" placeholder="Agregar tarea...">
+                            <input id="phaseCount" class="px-2 rounded-sm" type="number" min="0" placeholder="Número de fases...">
+                            <button id="addTaskBtn" class="btn-add border-solid bg-[#00ADB5] px-2 rounded-sm text-white">Añadir tarea</button>
                         </form>
                     </div>
                 </div>
