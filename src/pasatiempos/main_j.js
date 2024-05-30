@@ -1,4 +1,3 @@
-// Lista de palabras con sus respectivas pistas
 const wordList = [
   {
     word: "efimero",
@@ -95,7 +94,6 @@ const wordList = [
   },
 ];
 
-// Seleccionando elementos del DOM
 const wordDisplay = document.querySelector(".word-display");
 const guessesText = document.querySelector(".guesses-text b");
 const keyboardDiv = document.querySelector(".keyboard");
@@ -103,11 +101,9 @@ const hangmanImage = document.querySelector(".hangman-box img");
 const gameModal = document.querySelector(".game-modal");
 const playAgainBtn = gameModal.querySelector("button");
 
-// Inicializando variables del juego
 let currentWord, correctLetters, wrongGuessCount;
 const maxGuesses = 6;
 
-// Función para reiniciar el juego
 const resetGame = () => {
   correctLetters = [];
   wrongGuessCount = 0;
@@ -123,7 +119,6 @@ const resetGame = () => {
   gameModal.classList.remove("show");
 };
 
-// Función para obtener una palabra aleatoria
 const getRandomWord = () => {
   const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
   currentWord = randomWord.word;
@@ -131,7 +126,6 @@ const getRandomWord = () => {
   resetGame();
 };
 
-// Función para manejar el final del juego
 const gameOver = (isVictory) => {
   gameModal.querySelector("img").src = `images/${
     isVictory ? "victory" : "lost"
@@ -145,7 +139,6 @@ const gameOver = (isVictory) => {
   gameModal.classList.add("show");
 };
 
-// Función para manejar el clic en una letra
 const handleLetterClick = (button, letter) => {
   if (currentWord.includes(letter)) {
     currentWord.split("").forEach((char, index) => {
@@ -166,7 +159,6 @@ const handleLetterClick = (button, letter) => {
   if (correctLetters.length === currentWord.length) return gameOver(true);
 };
 
-// Crear botones del teclado y agregar eventos de clic
 const createKeyboard = () => {
   for (let i = 97; i <= 122; i++) {
     const letter = String.fromCharCode(i);

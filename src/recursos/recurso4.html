@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../output.css" rel="stylesheet">
+    <style>
+        #has-submenu:hover #submenu {
+            display: block;
+        }
+
+        #has-submenu {
+            position: relative;
+        }
+    </style>
+    <title>Linguaboost</title>
+</head>
+<body>
+
+    <header>
+        <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
+            <ul class="list-none flex justify-center gap-8 menu">
+                <li class="hover:text-blue-500"><a href="../index.html">Inicio</a></li>
+                <li class="hover:text-blue-500"><a href="../recursos.html">Recursos</a></li>
+                <li class="hover:text-blue-500"><a href="../tests.html">Tests</a></li>
+                <li id="has-submenu">
+                    <a class="hover:text-blue-500" href="">Pasatiempos</a>
+                    <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/sopa.html">Sopa de letras</a></li>
+                        <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/ahorcado.html">Ahorcado</a></li>
+                    </ul>
+                </li>
+                <li class="hover:text-blue-500"><a href="../agenda/agenda.html">Agenda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="px-4 bg-[#EEEEEE]">
+        <div class="grid justify-center items-center grid-cols-2 p-2">
+            <div>
+                <img class="rounded-xl p-2" src="https://escuelaelbs.lat/wp-content/uploads/%C2%BFPara-que-sirve-la-escritura.png" alt="Signos de puntuación">
+            </div>
+            <div class="rounded-xl">
+                <button class="bg-green-400 px-2 rounded-sm hover:bg-green-500"><a href="../testsF/test4.html">Realizar test</a></button>
+                <p class="p-4">En el vasto y dinámico panorama del idioma español, los errores lingüísticos son una presencia constante que afecta tanto a hablantes nativos como a aquellos que aprenden el idioma. Estos errores, que abarcan desde la ortografía hasta la gramática, pasando por la puntuación y la coherencia, no solo alteran la claridad y precisión de la comunicación, sino que también pueden influir en la percepción que otros tienen de nuestras habilidades lingüísticas. En este contexto, resulta esencial identificar y comprender los errores más comunes para mejorar nuestra competencia comunicativa y evitar malentendidos.</p>
+            </div>
+        </div>
+
+        <div class="p-4 bg-[#EEEEEE]">
+            <div class="p-4 rounded-xl">
+                <h1 class="font-bold">Errores específicos en la lectura y escritura</h1>
+                <p>Los errores específicos son alteraciones en los procesos de identificación, reproducción, comprensión e interpretación de los signos hablados y escritos. Estos errores pueden estar relacionados con la dislexia, pero también pueden deberse a dificultades en la enseñanza, aprendizaje inadecuado o insuficiente, o influencias contextuales y emocionales. Es crucial identificar correctamente las causas para evitar errores en el diagnóstico y la intervención.</p>
+                <p>Al inicio del proceso lectoescritor, es natural que los niños cometan errores al leer y escribir. Es importante distinguir entre errores normales del aprendizaje y aquellos persistentes a pesar de las correcciones constantes.</p>
+
+                <h2 class="font-bold mt-4">Errores específicos en la lectura</h2>
+                <ul>
+                    <li><span class="font-bold">Adición:</span> Añadir sonidos vocálicos, consonánticos o sílabas inexistentes. </li>
+                    <li><span class="font-bold">Adivinación:</span> Leer incorrectamente una palabra basándose solo en la primera sílaba.</li>
+                    <li><span class="font-bold">Inversión:</span> Alterar la posición de letras o grafías, como m por w.</li>
+                    <li><span class="font-bold">Omisión:</span> Omitir letras, sílabas o palabras, especialmente sonidos como n, r, l y s.</li>
+                    <li><span class="font-bold">Sustitución:</span> Cambiar sonidos vocálicos o consonánticos por otros incorrectos.</li>
+                </ul>
+
+                <h2 class="font-bold mt-4">Errores en la velocidad lectora</h2>
+                <ul>
+                    <li><span class="font-bold">Silabeo:</span> Leer sílaba a sílaba, afectando la fluidez.</li>
+                    <li><span class="font-bold">Denegación:</span> Omitir deliberadamente palabras difíciles.</li>
+                    <li><span class="font-bold">Lectura mecánica:</span> Leer muy rápido sin comprensión.</li>
+                    <li><span class="font-bold">Ralentización por exceso de fijadores:</span> Leer muy lentamente, afectando la comprensión.</li>
+                    <li><span class="font-bold">Vocalización o labialización:</span> Repetir verbalmente las palabras al leer.</li>
+                    <li><span class="font-bold">Subvocalización:</span> Pronunciar mentalmente las palabras al leer.</li>
+                    <li><span class="font-bold">Señalado:</span> Usar un dedo, regla, lápiz, etc., para guiar la lectura.</li>
+                    <li><span class="font-bold">Regresión:</span> Releer palabras y frases debido a errores o pérdida de fijación ocular.</li>
+                </ul>
+
+                <h2 class="font-bold mt-4">Errores en la escritura</h2>
+                <ul>
+                    <li><span class="font-bold">Repeticiones:</span> Repetir grafías, letras, sílabas o palabras.</li>
+                    <li><span class="font-bold">Fragmentaciones:</span> Separar incorrectamente las palabras.</li>
+                    <li><span class="font-bold">Contaminaciones:</span> Unir incorrectamente dos o más palabras.</li>
+                    <li><span class="font-bold">Omisiones:</span> Omitir letras, sílabas o palabras.</li>
+                    <li><span class="font-bold">Adiciones o añadidos:</span> Agregar letras o sílabas a las palabras.</li>
+                    <li><span class="font-bold">Inversiones:</span> Alterar el orden secuencial de las palabras.</li>
+                    <li><span class="font-bold">Sustituciones:</span> Cambiar letras por otras con similitud fonética, como m/n.</li>
+                </ul>
+                <p>La nomenclatura de estos errores puede variar según los autores o el país, pero las características y definiciones son similares. La intervención para corregir estas dificultades debe comenzar por reforzar las funciones básicas: orientación espacial, lateralidad, coordinación visomotora, percepción, memoria y enseñar técnicas para alcanzar la fluidez lectora.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,12 @@
         #has-submenu {
             position: relative;
         }
+
+        #submenu {
+            display: none;
+            position: absolute;
+        }
+
         .green {
             color: green;
         }
@@ -20,9 +26,9 @@
             color: red;
         }
     </style>
-    <title>Linguaboost</title>
 </head>
-<body">
+<body>
+
     <header>
         <nav class="bg-[#222831] p-2 text-[#F9FAF9]">
             <ul class="list-none flex justify-center gap-8 menu">
@@ -30,8 +36,8 @@
                 <li class="hover:text-blue-500"><a href="../recursos.html">Recursos</a></li>
                 <li class="hover:text-blue-500"><a href="../tests.html">Tests</a></li>
                 <li id="has-submenu">
-                    <a class="hover:text-blue-500" href="">Pasatiempos</a>
-                    <ul id="submenu" class="hidden absolute bg-[#393E46] w-max px-2 py-1">
+                    <a class="hover:text-blue-500" href="#">Pasatiempos</a>
+                    <ul id="submenu" class="bg-[#393E46] w-max px-2 py-1">
                         <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/sopa.html">Sopa de letras</a></li>
                         <li><a class="hover:text-[17px] hover:text-blue-500" href="../pasatiempos/ahorcado.html">Ahorcado</a></li>
                     </ul>
@@ -44,83 +50,83 @@
 
     <section class="m-4 p-6 bg-gray-100 rounded-xl grid grid-cols-1 md:grid-cols-2 gap-6 shadow-lg">
         <div class="bg-white px-6 py-4 rounded-xl shadow-md">
-            <h1 class="my-4 font-bold text-[22px] text-gray-800 text-center bg-gray-200 p-2 rounded-xl">Cuestionario ortográfico</h1>
+            <h1 class="my-4 font-bold text-[22px] text-gray-800 text-center bg-gray-200 p-2 rounded-xl">Cuestionario de palabras mal pronunciadas</h1>
 
             <form class="px-2 pb-4" id="quizForm">
                 <ol class="list-inside">
                     <li class="pb-2">
-                        <h3 class="font-bold">1. ¿Cuál es la forma correcta de escribir la palabra para indicar que alguien hace falta?</h3>
+                        <h3 class="font-bold">1. ¿Cuál es la forma correcta de la palabra "idiosincracia"?</h3>
                         <label>
-                            <input type="radio" name="q1" value="a" required> a) "Hechar de menos"
+                            <input type="radio" name="q1" value="a" required> a) Idiosincrasia
                         </label><br>
                         <label>
-                            <input type="radio" name="q1" value="b"> b) "Echar de menos"
+                            <input type="radio" name="q1" value="b"> b) Idiosincrásia
                         </label><br>
                         <label>
-                            <input type="radio" name="q1" value="c"> c) "Echar de menoz"
+                            <input type="radio" name="q1" value="c"> c) Idiosinccracia
                         </label><br>
                         <label>
-                            <input type="radio" name="q1" value="d"> d) "Hechar de menoz"
-                        </label><br>
-                    </li>
-                    <li class="pb-2">
-                        <h3 class="font-bold">2. ¿Qué palabra no debe llevar tilde según las reglas ortográficas?</h3>
-                        <label>
-                            <input type="radio" name="q2" value="a" required> a) "Qué"
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q2" value="b"> b) "Cuál"
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q2" value="c"> c) "Cual"
-                        </label><br>
-                        <label>
-                            <input type="radio" name="q2" value="d"> d) "Qué?"
+                            <input type="radio" name="q1" value="d"> d) Idiosinccrásia
                         </label><br>
                     </li>
                     <li class="pb-2">
-                        <h3 class="font-bold">3. ¿Qué error se comete al escribir "expectacular"?</h3>
+                        <h3 class="font-bold">2. ¿Cuál es la forma correcta de la palabra "preveer"?</h3>
                         <label>
-                            <input type="radio" name="q3" value="a" required> a) Se escribe con "x" en lugar de "es"
+                            <input type="radio" name="q2" value="a" required> a) Preveer
                         </label><br>
                         <label>
-                            <input type="radio" name="q3" value="b"> b) Se escribe con "b" en lugar de "v"
+                            <input type="radio" name="q2" value="b"> b) Preveér
                         </label><br>
                         <label>
-                            <input type="radio" name="q3" value="c"> c) Se escribe con "ct" en lugar de "ct"
+                            <input type="radio" name="q2" value="c"> c) Preever
                         </label><br>
                         <label>
-                            <input type="radio" name="q3" value="d"> d) Se escribe con "c" en lugar de "s"
+                            <input type="radio" name="q2" value="d"> d) Preveér
                         </label><br>
                     </li>
                     <li class="pb-2">
-                        <h3 class="font-bold">4. ¿Qué se debe recordar al escribir nombres propios?</h3>
+                        <h3 class="font-bold">3. ¿Cuál es la forma correcta de la palabra "fregaplatos"?</h3>
                         <label>
-                            <input type="radio" name="q4" value="a" required> a) Siempre llevar mayúscula
+                            <input type="radio" name="q3" value="a" required> a) Fregaplatos
                         </label><br>
                         <label>
-                            <input type="radio" name="q4" value="b"> b) Siempre llevar tilde
+                            <input type="radio" name="q3" value="b"> b) Fregaplátos
                         </label><br>
                         <label>
-                            <input type="radio" name="q4" value="c"> c) Siempre llevar diéresis
+                            <input type="radio" name="q3" value="c"> c) Fregaplatós
                         </label><br>
                         <label>
-                            <input type="radio" name="q4" value="d"> d) Siempre llevar guion
+                            <input type="radio" name="q3" value="d"> d) Fregáplatós
+                        </label><br>
+                    </li>
+                    <li class="pb-2">
+                        <h3 class="font-bold">4. ¿Cuál es la forma correcta de la palabra "exhuberante"?</h3>
+                        <label>
+                            <input type="radio" name="q4" value="a" required> a) Exhuberante
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q4" value="b"> b) Exuberante
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q4" value="c"> c) Eshuberante
+                        </label><br>
+                        <label>
+                            <input type="radio" name="q4" value="d"> d) Eshuberánt
                         </label><br>
                     </li>
                     <li>
-                        <h3 class="font-bold">5. ¿Cuál es la diferencia entre "había" y "habían"?</h3>
+                        <h3 class="font-bold">5. ¿Cuál es la forma correcta de la palabra "exumar"?</h3>
                         <label>
-                            <input type="radio" name="q5" value="a" required> a) "Había" se usa como verbo auxiliar, "habían" como verbo principal.
+                            <input type="radio" name="q5" value="a" required> a) Exhumar
                         </label><br>
                         <label>
-                            <input type="radio" name="q5" value="b"> b) "Había" es incorrecto, "habían" es correcto.
+                            <input type="radio" name="q5" value="b"> b) Exumar
                         </label><br>
                         <label>
-                            <input type="radio" name="q5" value="c"> c) "Había" siempre va seguido de sustantivo, "habían" de adjetivo.
+                            <input type="radio" name="q5" value="c"> c) Exhumár
                         </label><br>
                         <label>
-                            <input type="radio" name="q5" value="d"> d) "Había" es singular, "habían" es plural.
+                            <input type="radio" name="q5" value="d"> d) Exhumár
                         </label><br>
                     </li>
                 </ol>
@@ -129,7 +135,7 @@
                 </div>
             </form>
         </div>
-
+        
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h1 class="font-bold text-[22px] text-gray-800">Resultado</h1>
             <div class="rounded-xl mt-4 p-4 bg-gray-50 text-gray-700" id="result"></div>
@@ -137,11 +143,11 @@
             <div id="correctAnswers" class="mt-4 hidden">
                 <h2 class="text-xl font-semibold">Respuestas correctas:</h2>
                 <ol>
-                    <li><span class="font-bold">1.</span> La respuesta correcta es el inciso b, "Echar de menos". La forma correcta es "echar de menos". "Hechar de menos" es incorrecto porque no respeta la regla de usar "h" antes de "e" en este verbo.</li>
-                    <li><span class="font-bold">2.</span> La respuesta correcta es el inciso c, "Cual". "Cual" es un pronombre relativo o interrogativo que no lleva tilde en ningún caso, mientras que "qué" y "cuál" sí llevan tilde dependiendo del contexto.</li>
-                    <li><span class="font-bold">3.</span> La respuesta correcta es el inciso b, "Se escribe con 'b' en lugar de 'v'". La palabra correcta es "espectacular", con "s" y "c". "Expectacular" es un error común por confusión entre "b" y "v".</li>
-                    <li><span class="font-bold">4.</span> La respuesta correcta es el inciso a, "Siempre llevar mayúscula". Los nombres propios siempre deben escribirse con la primera letra en mayúscula, según las reglas ortográficas básicas.</li>
-                    <li><span class="font-bold">5.</span> La respuesta correcta es el inciso d, "Había es singular, 'habían' es plural". "Había" es la forma singular de "haber" (verbo impersonal), mientras que "habían" es la forma plural.</li>
+                    <li><span class="font-bold">1.</span> La respuesta correcta es el inciso a, "Idiosincrasia" es la forma correcta.</li>
+                    <li><span class="font-bold">2.</span> La respuesta correcta es el inciso a, "Preveer" es la forma correcta.</li>
+                    <li><span class="font-bold">3.</span> La respuesta correcta es el inciso a, "Fregaplatos" es la forma correcta.</li>
+                    <li><span class="font-bold">4.</span> La respuesta correcta es el inciso b, "Exuberante" es la forma correcta.</li>
+                    <li><span class="font-bold">5.</span> La respuesta correcta es el inciso a, "Exhumar" es la forma correcta.</li>
                 </ol>
             </div>
             <div id="tryAgain" class="mt-4 hidden">
@@ -161,9 +167,9 @@
                 </div>
 
                 <div class="flex bg-[#EEEEEE] rounded-lg px-2 py-1 cursor-pointer mt-2 mx-6">
-                    <a href="./test3.html" class="grid pl-2">
-                        <h1 class="font-bold">Test de palabras mal pronunciadas</h1>
-                        <h1>Se evaluara unas palabras mal pronunciadas</h1>
+                    <a href="./test2.html" class="grid pl-2">
+                        <h1 class="font-bold">Test de palabras mal escritas en redes sociales</h1>
+                        <h1>Se evaluara todo los temas que se estudiaron en relacion a las redes sociales</h1>
                     </a>
                 </div>
 
@@ -187,8 +193,7 @@
             const quizForm = document.getElementById('quizForm');
             
             let score = 0;
-            const correctAnswers =  ["b","c","b","a","d"];
-
+            const correctAnswers = ['a', 'a', 'a', 'b', 'a']; 
             const userAnswers = [
                 quizForm.querySelector('input[name="q1"]:checked').value,
                 quizForm.querySelector('input[name="q2"]:checked').value,
@@ -249,5 +254,4 @@
             tryAgainDiv.classList.add('hidden');
         });
     </script>
-
 </body>

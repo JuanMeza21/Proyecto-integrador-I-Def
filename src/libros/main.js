@@ -169,13 +169,86 @@ let books = [
     ],
     readLink: "https://online.fliphtml5.com/pezzr/xfza/#p=1",
   },
+  {
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Fiction",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg/1200px-To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg",
+    questions: [
+      {
+        question: "¿Quién es el autor del libro?",
+        options: ["Harper Lee", "Mark Twain", "Ernest Hemingway"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿Cuál es el tema principal del libro?",
+        options: ["Racismo", "Amor", "Guerra"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿En qué año fue publicado el libro?",
+        options: ["1960", "1950", "1970"],
+        correctAnswer: 0,
+      },
+    ],
+    readLink: "https://www.raio.org/TKMFullText.pdf",
+  },
+  {
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    genre: "Fiction",
+    image:
+      "https://images.cdn2.buscalibre.com/fit-in/360x360/63/0f/630f05cd4596ad44a1ecd0bb261f6327.jpg",
+    questions: [
+      {
+        question: "¿Quién es el autor del libro?",
+        options: ["J.D. Salinger", "F. Scott Fitzgerald", "John Steinbeck"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿Cuál es el nombre del protagonista?",
+        options: ["Holden Caulfield", "Jay Gatsby", "George Milton"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿En qué ciudad se desarrolla la mayor parte de la historia?",
+        options: ["Nueva York", "Los Ángeles", "Chicago"],
+        correctAnswer: 0,
+      },
+    ],
+    readLink:
+      "https://simontechnology.org/ourpages/auto/2013/1/23/53406450/Catcher%20in%20the%20Rye%20Text.pdf",
+  },
+  {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Fiction",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi5lknrw7SIwZ01RQRqyvtXz2bFxrUsGVpA&s",
+    questions: [
+      {
+        question: "¿Quién es el autor del libro?",
+        options: ["F. Scott Fitzgerald", "Ernest Hemingway", "J.D. Salinger"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿Cuál es el nombre del protagonista?",
+        options: ["Jay Gatsby", "Nick Carraway", "Tom Buchanan"],
+        correctAnswer: 0,
+      },
+      {
+        question: "¿En qué época está ambientada la historia?",
+        options: ["Años 1920", "Años 1950", "Años 1980"],
+        correctAnswer: 0,
+      },
+    ],
+    readLink:
+      "https://www.wsfcs.k12.nc.us/cms/lib/NC01001395/Centricity/Domain/7935/Gatsby_PDF_FullText.pdf",
+  },
 ];
 
-// Array de libros eliminado para la demostración
-
-// Función para mostrar los libros al cargar la página
 function displayBooks() {
-  // Recorremos los libros y creamos las tarjetas para cada uno
   books.forEach((book) => {
     let card = document.createElement("div");
     card.classList.add("card", book.genre, "hide");
@@ -210,7 +283,6 @@ function displayBooks() {
   });
 }
 
-// Función para filtrar libros por género
 function filterBook(value) {
   let elements = document.querySelectorAll(".card");
 
@@ -227,7 +299,6 @@ function filterBook(value) {
   });
 }
 
-// Función para mostrar opciones (Leer libro, Realizar test, Cancelar) con SweetAlert
 function showOptions(title, questions) {
   Swal.fire({
     title: `¿Qué acción deseas realizar con el libro "${title}"?`,
@@ -239,25 +310,7 @@ function showOptions(title, questions) {
     cancelButtonText: "Cancelar",
   }).then((result) => {
     if (result.isConfirmed) {
-      document.getElementById("quiz-title").innerText = `Quiz sobre ${title}`;
-      document.getElementById("question1").innerText = questions[0];
-      document.getElementById("question2").innerText = questions[1];
-      document.getElementById("question3").innerText = questions[2];
-
-      let modal = document.getElementById("quizModal");
-      let span = document.getElementsByClassName("close")[0];
-
-      modal.style.display = "block";
-
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
+      resetQuizModal();
       showQuiz(title, questions);
     } else if (result.isDenied) {
       let book = books.find((book) => book.title === title);
@@ -268,36 +321,96 @@ function showOptions(title, questions) {
   });
 }
 
-// Función para mostrar el quiz modal
 function showQuiz(title, questions) {
   document.getElementById("quiz-title").innerText = `Quiz sobre ${title}`;
-  document.getElementById("question1").innerText = questions[0].question;
-  document.getElementById("question2").innerText = questions[1].question;
-  document.getElementById("question3").innerText = questions[2].question;
+
+  let form = document.getElementById("quiz-form");
+  form.innerHTML = "";
+
+  questions.forEach((q, index) => {
+    let questionContainer = document.createElement("div");
+    questionContainer.classList.add("question-container");
+
+    let question = document.createElement("p");
+    question.innerText = q.question;
+    questionContainer.appendChild(question);
+
+    q.options.forEach((opt, optIndex) => {
+      let label = document.createElement("label");
+      label.innerHTML = `
+        <input type="radio" name="answer${index}" value="${optIndex}" required>
+        ${opt}
+      `;
+      questionContainer.appendChild(label);
+    });
+
+    form.appendChild(questionContainer);
+  });
+
+  let submitButton = document.createElement("button");
+  submitButton.classList.add("bg-[#00ADB5]", "text-white", "px-2", "py-1");
+  submitButton.type = "button";
+  submitButton.innerText = "Enviar";
+  submitButton.onclick = function () {
+    submitQuiz(questions);
+  };
+  form.appendChild(submitButton);
 
   let modal = document.getElementById("quizModal");
-  let span = document.getElementsByClassName("close")[0];
-
   modal.style.display = "block";
-
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
 }
 
-// Función para inicializar la página y mostrar todos los libros
-window.onload = () => {
-  displayBooks();
-  filterBook("all"); // Mostrar todos los libros al inicio
+function submitQuiz(questions) {
+  let correctAnswers = 0;
+  let totalQuestions = questions.length;
+
+  questions.forEach((q, index) => {
+    let selectedOption = document.querySelector(
+      `input[name="answer${index}"]:checked`
+    );
+    if (selectedOption) {
+      let selectedAnswerIndex = parseInt(selectedOption.value);
+      if (selectedAnswerIndex === q.correctAnswer) {
+        correctAnswers++;
+      }
+    }
+  });
+
+  let message = `Obtuviste ${correctAnswers} de ${totalQuestions} respuestas correctas.`;
+
+  Swal.fire({
+    title: "Resultado del quiz",
+    text: message,
+    icon: "info",
+    confirmButtonText: "Aceptar",
+    confirmButtonColor: "#00ADB5",
+  }).then(() => {
+    document.getElementById("quizModal").style.display = "none";
+  });
+}
+
+function resetQuizModal() {
+  document.getElementById("quiz-title").innerText = "";
+  document.getElementById("quiz-form").innerHTML = "";
+  document.getElementById("quizModal").style.display = "none";
+}
+
+window.onclick = function (event) {
+  let modal = document.getElementById("quizModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 };
 
-// Función para buscar libros por título
+document.getElementsByClassName("close")[0].onclick = function () {
+  document.getElementById("quizModal").style.display = "none";
+};
+
+window.onload = () => {
+  displayBooks();
+  filterBook("all");
+};
+
 document.getElementById("search").addEventListener("click", () => {
   let searchInput = document
     .getElementById("search-input")

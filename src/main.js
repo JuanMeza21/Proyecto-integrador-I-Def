@@ -1,5 +1,3 @@
-//Consejos
-
 function obtenerNumeroAzar() {
   return Math.floor(Math.random() * (8 - 0) + 0);
 }
@@ -34,15 +32,12 @@ function establecerConsejo() {
   let consejo1 = consejos1[consejoIndex1];
   let consejo2 = consejos2[consejoIndex2];
 
-  // Extraer el título del consejo (desde el inicio hasta los dos puntos)
   let tituloConsejo1 = consejo1.substring(0, consejo1.indexOf(":") + 1);
   let tituloConsejo2 = consejo2.substring(0, consejo2.indexOf(":") + 1);
 
-  // Extraer el cuerpo del consejo (después de los dos puntos)
   let cuerpoConsejo1 = consejo1.substring(consejo1.indexOf(":") + 1);
   let cuerpoConsejo2 = consejo2.substring(consejo2.indexOf(":") + 1);
 
-  // Formatear el título en negrita y actualizar el contenido de los elementos HTML
   document.getElementById("consejo1").innerHTML = "<strong>" + tituloConsejo1 + "</strong>" + cuerpoConsejo1;
   document.getElementById("consejo2").innerHTML = "<strong>" + tituloConsejo2 + "</strong>" + cuerpoConsejo2;
 }
@@ -53,7 +48,6 @@ establecerConsejo();
 document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
 
-  // Arreglo de elementos de la galería
   const galleryItems = [
     {
       imageUrl:
@@ -119,10 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     currentIndex = (currentIndex + direction + totalImages) % totalImages;
 
-    // Seleccionar el contenedor de la galería
     const galleryContainer = document.querySelector(".gallery-container");
 
-    // Actualizar la imagen y la descripción en el contenedor de la galería
     galleryContainer.innerHTML = `
             <div class="gallery-item">
                 <img src="${galleryItems[currentIndex].imageUrl}" alt="">
@@ -134,6 +126,5 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
   }
 
-  // Llamar a la función navigate para mostrar la primera imagen al cargar la página
   navigate(0);
 });

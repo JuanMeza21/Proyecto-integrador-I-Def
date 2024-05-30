@@ -55,16 +55,11 @@
         <div class="mt-4 text-center">
             <h3>Selecciona palabras para buscar:</h3>
             <div id="checkboxes">
-                <!-- Los checkboxes se generarán dinámicamente aquí -->
             </div>
         </div>
     </section>
-
-    <footer>
-    </footer>
     
     <script>
-        // Array con las palabras que el usuario puede buscar
         var palabras = ['efimero', 'quimera', 'paradoja',
             'bonhomia', 'quirofano', 'lobrego',
             'ebano', 'esoterico', 'indigo',
@@ -76,7 +71,6 @@
             'clandestino', 'caótico', 'disidente'
         ];
 
-        // Función para generar checkboxes
         function generarCheckboxes() {
             var checkboxesDiv = document.getElementById('checkboxes');
             
@@ -98,14 +92,11 @@
             });
         }
 
-        // Llamar a la función para generar los checkboxes al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
             generarCheckboxes();
         });
 
-        // Event Listener para el botón de resolver sopa de letras
         $("#BTNresolver").click(function () {
-            // Obtener las palabras seleccionadas
             var palabrasSeleccionadas = [];
             palabras.forEach(function(palabra) {
                 if ($('#' + palabra).prop('checked')) {
@@ -113,14 +104,11 @@
                 }
             });
             
-            // Crear y resolver la sopa de letras con las palabras seleccionadas
             var sopaLetras = wordfindgame.create(palabrasSeleccionadas, '#contenedor', '#palabras-sopadeletras');
             var resultado = wordfindgame.solve(sopaLetras, palabrasSeleccionadas);
         });
 
-        // Event Listener para el botón de iniciar sopa de letras
         $("#BTNiniciar").click(function () {
-            // Obtener las palabras seleccionadas
             var palabrasSeleccionadas = [];
             palabras.forEach(function(palabra) {
                 if ($('#' + palabra).prop('checked')) {
@@ -128,11 +116,9 @@
                 }
             });
             
-            // Crear la sopa de letras con las palabras seleccionadas
             var sopaLetras = wordfindgame.create(palabrasSeleccionadas, '#contenedor', '#palabras-sopadeletras');
         });
 
-        // Event Listener para el botón de reiniciar sopa de letras
         $("#BTNrefresh").click(function () {
             window.location.href = window.location.href;
         });

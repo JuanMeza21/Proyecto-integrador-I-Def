@@ -15,10 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskItem = {
         text: text,
         phases: [],
-        creationDate: new Date().toLocaleString(), // Fecha de creación
+        creationDate: new Date().toLocaleString(), 
       };
 
-      // Utilizamos SweetAlert2 para capturar el texto de cada fase
       const getPhaseText = async (index) => {
         const { value: phaseText } = await Swal.fire({
           title: `Ingrese fase ${index + 1} de "${text}"`,
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return phaseText;
       };
 
-      // Promesa que captura el texto para todas las fases
       const capturePhases = async () => {
         for (let i = 0; i < phaseCount; i++) {
           const phaseText = await getPhaseText(i);
@@ -41,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       };
 
-      // Ejecutamos la función para capturar fases y luego agregamos la tarea a la lista
       capturePhases().then(() => {
         addTaskToList(taskItem);
         taskInput.value = "";
@@ -67,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     li.appendChild(p);
-    li.appendChild(creationDateSpan); // Añadimos la fecha de creación
+    li.appendChild(creationDateSpan);
     li.appendChild(phasesUl);
     li.appendChild(addDeleteBtn(li));
     ul.appendChild(li);

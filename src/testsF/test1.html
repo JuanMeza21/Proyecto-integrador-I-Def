@@ -144,7 +144,6 @@
         <div class="bg-white p-6 rounded-xl shadow-md">
             <h1 class="font-bold text-[22px] text-gray-800">Resultado</h1>
             <div class="rounded-xl mt-4 p-4 bg-gray-50 text-gray-700" id="result"></div>
-            <button id="mostrarOcultar" class="px-4 py-2 mt-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300 hidden">Mostrar respuestas</button>
 
             <div id="correctAnswers" class="mt-4 hidden">
                 <h2 class="text-xl font-semibold">Respuestas correctas:</h2>
@@ -158,10 +157,36 @@
             </div>
             <div id="tryAgain" class="mt-4 hidden">
                 <button id="intentarDeNuevo" class="px-4 py-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition duration-300">Intentar de nuevo</button>
+                <button id="mostrarOcultar" class="px-4 py-2 mt-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition duration-300 hidden">Mostrar respuestas</button>
+            </div>
+
+            <div class="pt-2">
+                <h1 class="bg-[#61dafb] px-2 rounded-lg py-2">Sugerencias de tests</h1>
+                
+                
+                <div class="flex bg-[#EEEEEE] rounded-lg px-2 py-1 cursor-pointer mt-2 mx-6">
+                    <a href="./test1.html" class="grid pl-2">
+                        <h1 class="font-bold">Test de palabras mal escritas en redes sociales</h1>
+                        <h1>Se evaluara todo los temas que se estudiaron en relacion a las redes sociales</h1>
+                    </a>
+                </div>
+
+                <div class="flex bg-[#EEEEEE] rounded-lg px-2 py-1 cursor-pointer mt-2 mx-6">
+                    <a href="./test3.html" class="grid pl-2">
+                        <h1 class="font-bold">Test de palabras mal pronunciadas</h1>
+                        <h1>Se evaluara unas palabras mal pronunciadas</h1>
+                    </a>
+                </div>
+
+                <div class="flex bg-[#EEEEEE] rounded-lg px-2 py-1 cursor-pointer mt-2 mx-6">
+                    <a href="./test4.html" class="grid pl-2">
+                        <h1 class="font-bold">Test de errores comunes en la escritura</h1>
+                        <h1>Se evaluara los errores comunes en la escritura segun el texo</h1>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-
 
     <script>
        document.getElementById('quizForm').addEventListener('submit', function(event) {
@@ -172,9 +197,8 @@
         const tryAgainDiv = document.getElementById('tryAgain');
         const quizForm = document.getElementById('quizForm');
         
-        // Calcular la puntuación
         let score = 0;
-        const correctAnswers = ['b', 'b', 'd', 'b', 'b']; // Respuestas correctas
+        const correctAnswers = ['b', 'b', 'd', 'b', 'b']; 
         const userAnswers = [
             quizForm.querySelector('input[name="q1"]:checked').value,
             quizForm.querySelector('input[name="q2"]:checked').value,
@@ -186,52 +210,44 @@
         const correctAnswersDiv = document.getElementById('correctAnswers');
         const ol = correctAnswersDiv.querySelector('ol');
 
-        // Iterar sobre las respuestas y comparar con las respuestas correctas
         for (let i = 0; i < correctAnswers.length; i++) {
             const answerItem = ol.children[i];
             const answerNumber = answerItem.querySelector('span').textContent.trim();
 
             if (userAnswers[i] === correctAnswers[i]) {
-                answerItem.classList.add('green'); // Respuesta correcta
+                answerItem.classList.add('green'); 
                 score++;
             } else {
-                answerItem.classList.add('red'); // Respuesta incorrecta
+                answerItem.classList.add('red'); 
             }
         }
 
-        // Deshabilitar el formulario para evitar envíos adicionales
         quizForm.querySelectorAll('input').forEach(input => {
             input.disabled = true;
         });
         quizForm.querySelector('button[type="submit"]').disabled = true;
         
-        // Mostrar mensaje de envío exitoso y mostrar el botón para mostrar respuestas
         resultDiv.innerHTML = `Tus respuestas han sido enviadas. Tu puntuación es ${score} de ${correctAnswers.length}.`;
         mostrarOcultarButton.classList.remove('hidden');
         tryAgainDiv.classList.remove('hidden');
         
-        // Scroll hacia la sección de resultados
         resultDiv.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Botón para mostrar/ocultar respuestas correctas
     document.getElementById('mostrarOcultar').addEventListener('click', function() {
         const correctAnswersDiv = document.getElementById('correctAnswers');
         correctAnswersDiv.classList.toggle('hidden');
     });
 
-    // Botón para intentar de nuevo (reiniciar formulario)
     document.getElementById('intentarDeNuevo').addEventListener('click', function() {
         const quizForm = document.getElementById('quizForm');
         
-        // Habilitar el formulario y restablecer los campos
         quizForm.reset();
         quizForm.querySelectorAll('input').forEach(input => {
             input.disabled = false;
         });
         quizForm.querySelector('button[type="submit"]').disabled = false;
         
-        // Ocultar resultados y botones
         const resultDiv = document.getElementById('result');
         const correctAnswersDiv = document.getElementById('correctAnswers');
         const mostrarOcultarButton = document.getElementById('mostrarOcultar');
